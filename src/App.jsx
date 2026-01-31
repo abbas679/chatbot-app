@@ -27,7 +27,7 @@ export default function App() {
     localStorage.setItem("chat-history", JSON.stringify(messages));
   }, [messages]);
 
-  // Clear chat button functionality
+  // CLEAR CHAT FUNCTION
   const clearChat = () => {
     const initial = {
       id: crypto.randomUUID(),
@@ -95,6 +95,9 @@ export default function App() {
       </div>
 
       {error && <div className="error">{error}</div>}
+
+      {/* MESSAGE COUNTER */}
+      <div className="message-counter">Total messages: {messages.length}</div>
 
       <ChatWindow messages={messages} />
       <ChatInput onSend={sendMessage} disabled={loading} />

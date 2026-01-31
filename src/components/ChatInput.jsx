@@ -3,17 +3,18 @@ import { useEffect, useRef, useState } from "react";
 const MAX_CHARS = 300;
 
 export default function ChatInput({ onSend, disabled }) {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState(""); // state for input
   const inputRef = useRef(null);
 
+  // Auto-focus input on load
   useEffect(() => {
-    inputRef.current?.focus(); // auto-focus on load
+    if (inputRef.current) inputRef.current.focus();
   }, []);
 
-  const send = () => {
+  const sendMessage = () => {
     if (!input.trim() || disabled) return;
     onSend(input.trim());
-    setInput("");
+    setInput(""); // clear input after sending
   };
 
   return (
@@ -21,18 +22,20 @@ export default function ChatInput({ onSend, disabled }) {
       <div className="input-wrapper">
         <input
           ref={inputRef}
-          aria-label="Chat input"
+          type="text"
           placeholder="Type a message..."
-          value={input}
+          value={input} // bind state here
           maxLength={MAX_CHARS}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && send()}
+          onChange={(e) => setInput(e.target.value)} // important: update state
+          onKeyDown={(e) => e.key === "Enter" && sendMessage()}
         />
+        {/* Character counter */}
         <span className="counter">
           {input.length}/{MAX_CHARS}
         </span>
       </div>
-      <button onClick={send} disabled={disabled || !input.trim()}>
+
+      <button onClick={sendMessage} disabled={!input.trim() || disabled}>
         Send
       </button>
     </div>

@@ -32,6 +32,12 @@ body {
   text-decoration: underline;
 }
 
+.message-counter {
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #555;
+}
+
 .chat-window {
   height: 420px;
   overflow-y: auto;
