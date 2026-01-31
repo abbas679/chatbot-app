@@ -11,6 +11,11 @@ A production-ready AI chatbot built with React and OpenAI API.
 - Secure API key handling
 - Modular, scalable architecture
 
+### Live Demo
+
+Try the chatbot live here:
+https://unrivaled-kheer-d5fcb7.netlify.app/
+
 ### Tech Stack
 
 - React (Vite)
